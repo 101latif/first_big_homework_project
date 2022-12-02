@@ -234,38 +234,38 @@ let user =
     }
   ]
 // We no longer want to be responsible for the users’ phone numbers. Please create a function that will loop through the array and set the phone numbers = null. Call the function.
-// const removePhoneNumber= () => {
-//     user.forEach((el) => {
-//       el.phone=null
-//     })
-//   }
-// removePhoneNumber();
+const removePhoneNumber= () => {
+    user.forEach((el) => {
+      el.phone=null
+    })
+  }
+removePhoneNumber();
 
 // // Make a function called getUserInfo that returns the user object found using the email passed as a parameter
 
-// const getUserInfo = (email) =>
-//   {
-//     user.forEach((el, index) => {
-//       if (el.email.toLowerCase()==email.toLowerCase())
-//         console.log(user[index])
-//     })
-//   }
-// getUserInfo("Chaim_McDermott@dana.io")
+const getUserInfo = (email) =>
+  {
+    user.forEach((el, index) => {
+      if (el.email.toLowerCase()==email.toLowerCase())
+        console.log(user[index])
+    })
+  }
+getUserInfo("Chaim_McDermott@dana.io")
 // // Kurtis Weissnat (Telly.Hoeger@billy.biz)  just submitted a request to change his username to “Eren Yeager”. We want to be able to change people’s usernames easily. 
 // // Make a function that takes 2 parameters “email” and “newUsername”
 // // The function should change the username of the user with that email
 // // Pass your arguments changeUsername("Telly.Hoeger@billy.biz", “Eren Yeager”)
-// const changeUsername = (email, newUsername) =>
-//   {
-//     user.forEach((el, index) => {
-//       if (el.email.toLowerCase()==email.toLowerCase())
-//       {
-//         el.username=newUsername
-//         console.log(user[index])
-//       }
-//     })
-//   }
-// changeUsername("Telly.Hoeger@billy.biz", "Eren Yeager")
+const changeUsername = (email, newUsername) =>
+  {
+    user.forEach((el, index) => {
+      if (el.email.toLowerCase()==email.toLowerCase())
+      {
+        el.username=newUsername
+        console.log(user[index])
+      }
+    })
+  }
+changeUsername("Telly.Hoeger@billy.biz", "Eren Yeager")
 // We just started a points program and have a list of how many points each user gets each month based on their subscription. [50, 20, 40, 33, 60, 20, 90, 110, 15, 30] 
 // The array is ordered so that arr[0] ‘50’ is for the first user, etc.
 // Make a function that will Iterate through this array, grab the data, and create new properties on the objects called monthlyPoints and set it equal to the data
@@ -277,8 +277,38 @@ const pointPrg = (points) => {
   })
 }
 pointPrg(points)
-console.log(user)
+
 // Make a variable months and set it equal to a number
+let month=11;
 // Make a function that For every month, add points to the users’ account.
+const addPoints = () =>
+  {
+    user.forEach((el) => 
+    {
+      for(let i=0; i<12; i++)
+         el.monthlyPoints++ 
+    })
+  }
+addPoints()
 // This month is special! We are going to add an additional 10% to everyone’s point totals! Create a function to do this (example: if someone has 200 points, we will bump it up to 220)
+const specialMonth = (month) =>
+  {
+    user.forEach((el) => 
+    {
+        if(new Date().getMonth() == month)
+          el.monthlyPoints+= (el.monthlyPoints * 0.10)
+    })
+      
+  }
+specialMonth(month)
+
 // 13. The user with email Chaim_McDermott@dana.io has submitted a request to delete her account. Make a function that will remove her from the array (taking the email as a parameter).
+const deleteAccount = (email) =>
+  {
+    user.forEach((el, index) => {
+      if (el.email.toLowerCase()==email.toLowerCase())
+        delete user[index];
+    })
+  }
+deleteAccount("Chaim_McDermott@dana.io")
+console.log(user)
